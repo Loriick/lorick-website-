@@ -70,17 +70,20 @@ require = (function (modules, cache, entry) {
   // Override the current require with this new one
   return newRequire;
 })({8:[function(require,module,exports) {
+//pour le rechargement de ParcelJS
 if (module.hot) {
   module.hot.accept(function() {
     window.location.reload();
   });
 }
-
+//Variables
 const mailmeText = document.querySelector(".mailme__text");
 const mailmeSpan = document.querySelector(".mailme__text--span");
 const variableText = ["drink a coffee", "talk about life or code", "a job"];
+const title = document.querySelector(".presentation__title");
 var counter = 0;
 
+//Span
 setInterval(() => {
   mailmeSpan.textContent = variableText[counter];
   counter++;
@@ -89,7 +92,13 @@ setInterval(() => {
   }
 }, 2000);
 
-},{}],14:[function(require,module,exports) {
+//title animation
+window.addEventListener("load", () => {
+  title.style.animation =
+    "tracking-in-expand 1.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
+});
+
+},{}],46:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -210,5 +219,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[14,8])
+},{}]},{},[46,8])
 //# sourceMappingURL=/dist/c39d988644563fc9e0141e4f231c18ae.map
