@@ -1,0 +1,28 @@
+@import "./_mixins.scss";
+
+.socialmedia {
+  grid-column: 2/6;
+  grid-row: 10;
+  display: flex;
+  @include tablet {
+    grid-column: 3/7;
+    align-items: center;
+  }
+  justify-content: space-between;
+  &__container--img {
+    width: 28px;
+    height: 28px;
+    @include tablet {
+      width: 30px;
+      width: 30px;
+    }
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

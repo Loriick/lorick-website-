@@ -1,0 +1,15 @@
+@import "./scss/_reset.scss";
+@import "./scss/_background.scss";
+@import "./scss/_presentation.scss";
+@import "./scss/_socialmedia.scss";
+@import "./scss/_intership.scss";
+@import "./scss/_mailme.scss";
+@import "./scss/_mixins.scss";
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  @include tablet {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}

@@ -1,0 +1,52 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+.mailme {
+  grid-column: 2/7;
+  grid-row: 8;
+  @include tablet {
+    grid-column: 3/7;
+  }
+  &__text {
+    font: {
+      family: $font;
+      size: 14px;
+    }
+    color: $color_font;
+    @include tablet {
+      font-size: 16px;
+    }
+    @include desktop {
+      font-size: 18px;
+    }
+  }
+  &__btn {
+    font: {
+      size: 12px;
+      family: $font;
+      weight: 300;
+    }
+    color: $color_font;
+    padding: 1em;
+    background: #a38900;
+    outline: none;
+    border-radius: 3px;
+    border: none;
+    padding: 3%;
+    margin-top: 3%;
+    @include tablet {
+      padding: 4%;
+      font-size: 14px;
+    }
+    @include desktop {
+      background: #fff;
+      color: #a38900;
+      width: 100px;
+      text-align: center;
+      padding: 1.5em;
+      font-size: 14px;
+      border-radius: 3%;
+    }
+  }
+}
+@include hoverbtn;
