@@ -1,4 +1,13 @@
 .grid {
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#323232),
+      color-stop(40%, #3f3f3f),
+      color-stop(150%, #1c1c1c)
+    ),
+    -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.4)), color-stop(200%, rgba(0, 0, 0, 0.25)));
   background: linear-gradient(to bottom, #323232 0%, #3f3f3f 40%, #1c1c1c 150%),
     linear-gradient(
       to top,

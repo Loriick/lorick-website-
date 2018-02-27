@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({8:[function(require,module,exports) {
+})({3:[function(require,module,exports) {
 //pour le rechargement de ParcelJS
 if (module.hot) {
   module.hot.accept(function() {
@@ -79,7 +79,11 @@ if (module.hot) {
 //Variables
 const mailmeText = document.querySelector(".mailme__text");
 const mailmeSpan = document.querySelector(".mailme__text--span");
-const variableText = ["drink a coffee", "talk about life or code", "a job"];
+const variableText = [
+  "drink a coffee",
+  "chit chat about coding",
+  "propose a job offer"
+];
 const title = document.querySelector(".presentation__title");
 var counter = 0;
 
@@ -94,11 +98,10 @@ setInterval(() => {
 
 //title animation
 window.addEventListener("load", () => {
-  title.style.animation =
-    "tracking-in-expand 1.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
+  title.classList.add("presentation__animation");
 });
 
-},{}],46:[function(require,module,exports) {
+},{}],10:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -118,7 +121,7 @@ module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
-  var ws = new WebSocket('ws://' + hostname + ':' + '59285' + '/');
+  var ws = new WebSocket('ws://' + hostname + ':' + '52796' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -219,5 +222,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[46,8])
+},{}]},{},[10,3])
 //# sourceMappingURL=/dist/c39d988644563fc9e0141e4f231c18ae.map

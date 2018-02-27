@@ -1,19 +1,23 @@
 @import "./variables.scss";
 @import "./mixins.scss";
-
 .mailme {
-  grid-column: 2/7;
+  grid-column: 2/6;
   grid-row: 8;
   @include tablet {
     grid-column: 3/7;
   }
   @include desktop {
     grid-column: 4/7;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
   }
-
   &__text {
     font: {
       family: $font;
@@ -27,6 +31,20 @@
       font-size: 18px;
     }
   }
+  &__text--span {
+    font: {
+      family: $font;
+      size: 14px;
+    }
+    color: $color_font;
+    @include tablet {
+      font-size: 16px;
+    }
+
+    @include desktop {
+      font-size: 18px;
+    }
+  }
   &__btn {
     font: {
       size: 12px;
@@ -34,10 +52,9 @@
     }
     text-decoration: none;
     color: $color_font;
-    padding: 1em;
-    background: #a38900;
+    background: #d4af37;
     outline: none;
-    border-radius: 3px;
+    border-radius: 50%;
     border: none;
     padding: 3%;
     margin-top: 3%;
@@ -46,15 +63,15 @@
       font-size: 14px;
     }
     @include desktop {
-      width: 140px;
+      width: 130px;
       height: 50px;
       background: #fff;
-      color: #a38900;
+      color: #d4af37;
       text-align: center;
       font-weight: 600;
       line-height: 50px;
       font-size: 18px;
-      border-radius: 3%;
+      border-radius: 10%;
       padding: 0;
     }
   }

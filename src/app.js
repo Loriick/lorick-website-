@@ -7,7 +7,11 @@ if (module.hot) {
 //Variables
 const mailmeText = document.querySelector(".mailme__text");
 const mailmeSpan = document.querySelector(".mailme__text--span");
-const variableText = ["drink a coffee", "talk about life or code", "a job"];
+const variableText = [
+  "drink a coffee",
+  "chit chat about coding",
+  "propose a job offer"
+];
 const title = document.querySelector(".presentation__title");
 var counter = 0;
 
@@ -22,6 +26,5 @@ setInterval(() => {
 
 //title animation
 window.addEventListener("load", () => {
-  title.style.animation =
-    "tracking-in-expand 1.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
+  title.classList.add("presentation__animation");
 });

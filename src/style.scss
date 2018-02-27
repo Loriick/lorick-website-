@@ -5,6 +5,9 @@
 @import "./scss/_intership.scss";
 @import "./scss/_mailme.scss";
 @import "./scss/_mixins.scss";
+body {
+  overflow: hidden;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);

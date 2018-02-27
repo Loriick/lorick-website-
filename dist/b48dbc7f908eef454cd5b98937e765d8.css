@@ -126,6 +126,7 @@ table {
   border-spacing: 0; }
 
 .grid {
+  background: -webkit-gradient(linear, left top, left bottom, from(#323232), color-stop(40%, #3f3f3f), color-stop(150%, #1c1c1c)), -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.4)), color-stop(200%, rgba(0, 0, 0, 0.25)));
   background: linear-gradient(to bottom, #323232 0%, #3f3f3f 40%, #1c1c1c 150%), linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.25) 200%);
   background-blend-mode: multiply;
   width: 100vw;
@@ -157,10 +158,10 @@ table {
     color: #fff; }
     @media screen and (min-width: 768px) {
       .presentation__title {
-        font-size: 45px; } }
+        font-size: 70px; } }
     @media screen and (min-width: 1280px) {
       .presentation__title {
-        font-size: 100px; } }
+        font-size: 120px; } }
   .presentation__subtitle {
     font-family: "lato";
     font-size: 14px;
@@ -182,6 +183,9 @@ table {
       .presentation__hetic--Link {
         font-size: 20px;
         font-weight: 600; } }
+  .presentation__animation {
+    -webkit-animation: tracking-in-expand 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation: tracking-in-expand 1.5s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 @-webkit-keyframes tracking-in-expand {
   0% {
@@ -192,24 +196,29 @@ table {
   100% {
     opacity: 1; } }
 
-@-webkit-keyframes tracking-in-contract {
+@keyframes tracking-in-expand {
   0% {
-    letter-spacing: 1em;
+    letter-spacing: -0.5em;
     opacity: 0; }
   40% {
     opacity: 0.6; }
   100% {
-    letter-spacing: normal;
     opacity: 1; } }
 
 .socialmedia {
   grid-column: 2/6;
   grid-row: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between; }
   @media screen and (min-width: 768px) {
     .socialmedia {
       grid-column: 3/7;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center; } }
   @media screen and (min-width: 1280px) {
     .socialmedia {
@@ -224,9 +233,10 @@ table {
   .socialmedia__img {
     width: 100%;
     height: 100%;
+    -o-object-fit: cover;
     object-fit: cover; }
     .socialmedia__img:hover {
-      opacity: 0.7; }
+      opacity: 0.5; }
 
 .intership {
   grid-column: 2/6;
@@ -236,23 +246,25 @@ table {
       grid-column: 3/7; } }
   @media screen and (min-width: 1280px) {
     .intership {
-      grid-column: 4/6; } }
+      grid-column: 4/7; } }
   .intership__text {
     font-family: "lato";
     font-size: 14px;
     font-weight: 300;
+    line-height: 1.5;
     color: #fff; }
     @media screen and (min-width: 768px) {
       .intership__text {
         font-size: 16px; } }
     @media screen and (min-width: 1280px) {
       .intership__text {
-        font-size: 18px; } }
+        font-size: 18px;
+        line-height: 1.5; } }
   .intership__bold {
     font-weight: 600; }
 
 .mailme {
-  grid-column: 2/7;
+  grid-column: 2/6;
   grid-row: 8; }
   @media screen and (min-width: 768px) {
     .mailme {
@@ -260,8 +272,14 @@ table {
   @media screen and (min-width: 1280px) {
     .mailme {
       grid-column: 4/7;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
       justify-content: space-between; } }
   .mailme__text {
     font-family: "lato";
@@ -273,15 +291,24 @@ table {
     @media screen and (min-width: 1280px) {
       .mailme__text {
         font-size: 18px; } }
+  .mailme__text--span {
+    font-family: "lato";
+    font-size: 14px;
+    color: #fff; }
+    @media screen and (min-width: 768px) {
+      .mailme__text--span {
+        font-size: 16px; } }
+    @media screen and (min-width: 1280px) {
+      .mailme__text--span {
+        font-size: 18px; } }
   .mailme__btn {
     font-size: 12px;
     font-family: "lato";
     text-decoration: none;
     color: #fff;
-    padding: 1em;
-    background: #a38900;
+    background: #d4af37;
     outline: none;
-    border-radius: 3px;
+    border-radius: 50%;
     border: none;
     padding: 3%;
     margin-top: 3%; }
@@ -291,15 +318,15 @@ table {
         font-size: 14px; } }
     @media screen and (min-width: 1280px) {
       .mailme__btn {
-        width: 140px;
+        width: 130px;
         height: 50px;
         background: #fff;
-        color: #a38900;
+        color: #d4af37;
         text-align: center;
         font-weight: 600;
         line-height: 50px;
         font-size: 18px;
-        border-radius: 3%;
+        border-radius: 10%;
         padding: 0; } }
 
 /* Bounce To Right */
@@ -325,7 +352,7 @@ table {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #a38900;
+  background: #d4af37;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
   -webkit-transform-origin: 0 50%;
@@ -350,6 +377,9 @@ table {
   transform: scaleX(1);
   -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
   transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66); }
+
+body {
+  overflow: hidden; }
 
 .grid {
   display: grid;

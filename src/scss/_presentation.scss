@@ -31,11 +31,11 @@
     }
     color: $color_font;
     @include tablet {
-      font-size: 45px;
+      font-size: 70px;
     }
 
     @include desktop {
-      font-size: 100px;
+      font-size: 120px;
     }
   }
   &__subtitle {
@@ -67,6 +67,11 @@
       }
     }
   }
+  &__animation {
+    -webkit-animation: tracking-in-expand 1.5s
+      cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation: tracking-in-expand 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
 }
 
 @-webkit-keyframes tracking-in-expand {
@@ -82,16 +87,15 @@
   }
 }
 
-@-webkit-keyframes tracking-in-contract {
+@keyframes tracking-in-expand {
   0% {
-    letter-spacing: 1em;
+    letter-spacing: -0.5em;
     opacity: 0;
   }
   40% {
     opacity: 0.6;
   }
   100% {
-    letter-spacing: normal;
     opacity: 1;
   }
 }
