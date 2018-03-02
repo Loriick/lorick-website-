@@ -7,7 +7,7 @@
 // orig method which is the require for previous bundles
 
 // eslint-disable-next-line no-global-assign
-require = (function (modules, cache, entry) {
+require = (function(modules, cache, entry) {
   // Save the require from previous bundle to this closure if any
   var previousRequire = typeof require === "function" && require;
 
@@ -30,25 +30,30 @@ require = (function (modules, cache, entry) {
           return previousRequire(name, true);
         }
 
-        var err = new Error('Cannot find module \'' + name + '\'');
-        err.code = 'MODULE_NOT_FOUND';
+        var err = new Error("Cannot find module '" + name + "'");
+        err.code = "MODULE_NOT_FOUND";
         throw err;
       }
-      
+
       localRequire.resolve = resolve;
 
-      var module = cache[name] = new newRequire.Module;
+      var module = (cache[name] = new newRequire.Module());
 
-      modules[name][0].call(module.exports, localRequire, module, module.exports);
+      modules[name][0].call(
+        module.exports,
+        localRequire,
+        module,
+        module.exports
+      );
     }
 
     return cache[name].exports;
 
-    function localRequire(x){
+    function localRequire(x) {
       return newRequire(localRequire.resolve(x));
     }
 
-    function resolve(x){
+    function resolve(x) {
       return modules[name][1][x] || x;
     }
   }
@@ -69,158 +74,179 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({3:[function(require,module,exports) {
-//pour le rechargement de ParcelJS
-if (module.hot) {
-  module.hot.accept(function() {
-    window.location.reload();
-  });
-}
-//Variables
-const mailmeText = document.querySelector(".mailme__text");
-const mailmeSpan = document.querySelector(".mailme__text--span");
-const variableText = [
-  "drink a coffee",
-  "chit chat about coding",
-  "propose a job offer"
-];
-const title = document.querySelector(".presentation__title");
-var counter = 0;
-
-//Span
-setInterval(() => {
-  mailmeSpan.textContent = variableText[counter];
-  counter++;
-  if (counter === variableText.length) {
-    counter = 0;
-  }
-}, 2000);
-
-//title animation
-window.addEventListener("load", () => {
-  title.classList.add("presentation__animation");
-});
-
-},{}],10:[function(require,module,exports) {
-
-var global = (1, eval)('this');
-var OldModule = module.bundle.Module;
-function Module() {
-  OldModule.call(this);
-  this.hot = {
-    accept: function (fn) {
-      this._acceptCallback = fn || function () {};
-    },
-    dispose: function (fn) {
-      this._disposeCallback = fn;
-    }
-  };
-}
-
-module.bundle.Module = Module;
-
-if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var hostname = '' || location.hostname;
-  var ws = new WebSocket('ws://' + hostname + ':' + '52796' + '/');
-  ws.onmessage = function (event) {
-    var data = JSON.parse(event.data);
-
-    if (data.type === 'update') {
-      data.assets.forEach(function (asset) {
-        hmrApply(global.require, asset);
-      });
-
-      data.assets.forEach(function (asset) {
-        if (!asset.isNew) {
-          hmrAccept(global.require, asset.id);
+})(
+  {
+    10: [
+      function(require, module, exports) {
+        //pour le rechargement de ParcelJS
+        if (module.hot) {
+          module.hot.accept(function() {
+            window.location.reload();
+          });
         }
-      });
-    }
+        //Variables
+        const mailmeText = document.querySelector(".mailme__text");
+        const mailmeSpan = document.querySelector(".mailme__text--span");
+        const variableText = [
+          "drink a coffee",
+          "chit chat about coding",
+          "propose a job offer"
+        ];
+        const title = document.querySelector(".presentation__title");
+        var counter = 0;
 
-    if (data.type === 'reload') {
-      ws.close();
-      ws.onclose = function () {
-        location.reload();
-      };
-    }
+        //Span
+        setInterval(() => {
+          mailmeSpan.textContent = variableText[counter];
+          counter++;
+          if (counter === variableText.length) {
+            counter = 0;
+          }
+        }, 2500);
 
-    if (data.type === 'error-resolved') {
-      console.log('[parcel] ✨ Error resolved');
-    }
+        //title animation
+        window.addEventListener("load", () => {
+          title.classList.add("presentation__animation");
+        });
+      },
+      {}
+    ],
+    17: [
+      function(require, module, exports) {
+        var global = (1, eval)("this");
+        var OldModule = module.bundle.Module;
+        function Module() {
+          OldModule.call(this);
+          this.hot = {
+            accept: function(fn) {
+              this._acceptCallback = fn || function() {};
+            },
+            dispose: function(fn) {
+              this._disposeCallback = fn;
+            }
+          };
+        }
 
-    if (data.type === 'error') {
-      console.error('[parcel] 🚨  ' + data.error.message + '\n' + 'data.error.stack');
-    }
-  };
-}
+        module.bundle.Module = Module;
 
-function getParents(bundle, id) {
-  var modules = bundle.modules;
-  if (!modules) {
-    return [];
-  }
+        if (!module.bundle.parent && typeof WebSocket !== "undefined") {
+          var hostname = "" || location.hostname;
+          var ws = new WebSocket("ws://" + hostname + ":" + "55135" + "/");
+          ws.onmessage = function(event) {
+            var data = JSON.parse(event.data);
 
-  var parents = [];
-  var k, d, dep;
+            if (data.type === "update") {
+              data.assets.forEach(function(asset) {
+                hmrApply(global.require, asset);
+              });
 
-  for (k in modules) {
-    for (d in modules[k][1]) {
-      dep = modules[k][1][d];
-      if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) {
-        parents.push(+k);
-      }
-    }
-  }
+              data.assets.forEach(function(asset) {
+                if (!asset.isNew) {
+                  hmrAccept(global.require, asset.id);
+                }
+              });
+            }
 
-  if (bundle.parent) {
-    parents = parents.concat(getParents(bundle.parent, id));
-  }
+            if (data.type === "reload") {
+              ws.close();
+              ws.onclose = function() {
+                location.reload();
+              };
+            }
 
-  return parents;
-}
+            if (data.type === "error-resolved") {
+              console.log("[parcel] ✨ Error resolved");
+            }
 
-function hmrApply(bundle, asset) {
-  var modules = bundle.modules;
-  if (!modules) {
-    return;
-  }
+            if (data.type === "error") {
+              console.error(
+                "[parcel] 🚨  " + data.error.message + "\n" + "data.error.stack"
+              );
+            }
+          };
+        }
 
-  if (modules[asset.id] || !bundle.parent) {
-    var fn = new Function('require', 'module', 'exports', asset.generated.js);
-    asset.isNew = !modules[asset.id];
-    modules[asset.id] = [fn, asset.deps];
-  } else if (bundle.parent) {
-    hmrApply(bundle.parent, asset);
-  }
-}
+        function getParents(bundle, id) {
+          var modules = bundle.modules;
+          if (!modules) {
+            return [];
+          }
 
-function hmrAccept(bundle, id) {
-  var modules = bundle.modules;
-  if (!modules) {
-    return;
-  }
+          var parents = [];
+          var k, d, dep;
 
-  if (!modules[id] && bundle.parent) {
-    return hmrAccept(bundle.parent, id);
-  }
+          for (k in modules) {
+            for (d in modules[k][1]) {
+              dep = modules[k][1][d];
+              if (
+                dep === id ||
+                (Array.isArray(dep) && dep[dep.length - 1] === id)
+              ) {
+                parents.push(+k);
+              }
+            }
+          }
 
-  var cached = bundle.cache[id];
-  if (cached && cached.hot._disposeCallback) {
-    cached.hot._disposeCallback();
-  }
+          if (bundle.parent) {
+            parents = parents.concat(getParents(bundle.parent, id));
+          }
 
-  delete bundle.cache[id];
-  bundle(id);
+          return parents;
+        }
 
-  cached = bundle.cache[id];
-  if (cached && cached.hot && cached.hot._acceptCallback) {
-    cached.hot._acceptCallback();
-    return true;
-  }
+        function hmrApply(bundle, asset) {
+          var modules = bundle.modules;
+          if (!modules) {
+            return;
+          }
 
-  return getParents(global.require, id).some(function (id) {
-    return hmrAccept(global.require, id);
-  });
-}
-},{}]},{},[10,3])
+          if (modules[asset.id] || !bundle.parent) {
+            var fn = new Function(
+              "require",
+              "module",
+              "exports",
+              asset.generated.js
+            );
+            asset.isNew = !modules[asset.id];
+            modules[asset.id] = [fn, asset.deps];
+          } else if (bundle.parent) {
+            hmrApply(bundle.parent, asset);
+          }
+        }
+
+        function hmrAccept(bundle, id) {
+          var modules = bundle.modules;
+          if (!modules) {
+            return;
+          }
+
+          if (!modules[id] && bundle.parent) {
+            return hmrAccept(bundle.parent, id);
+          }
+
+          var cached = bundle.cache[id];
+          if (cached && cached.hot._disposeCallback) {
+            cached.hot._disposeCallback();
+          }
+
+          delete bundle.cache[id];
+          bundle(id);
+
+          cached = bundle.cache[id];
+          if (cached && cached.hot && cached.hot._acceptCallback) {
+            cached.hot._acceptCallback();
+            return true;
+          }
+
+          return getParents(global.require, id).some(function(id) {
+            return hmrAccept(global.require, id);
+          });
+        }
+      },
+      {}
+    ]
+  },
+  {},
+  [17, 10]
+);
 //# sourceMappingURL=/dist/c39d988644563fc9e0141e4f231c18ae.map

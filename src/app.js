@@ -22,7 +22,7 @@ setInterval(() => {
   if (counter === variableText.length) {
     counter = 0;
   }
-}, 2000);
+}, 2500);
 
 //title animation
 window.addEventListener("load", () => {
