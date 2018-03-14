@@ -2,7 +2,7 @@
 @import "./mixins.scss";
 .mailme {
   grid-column: 2/6;
-  grid-row: 8;
+  grid-row: 8 / span 2;
   @include tablet {
     grid-column: 3/7;
   }
@@ -17,6 +17,7 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    align-items: baseline;
   }
   &__text {
     font: {
